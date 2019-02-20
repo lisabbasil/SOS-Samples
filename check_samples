@@ -40,7 +40,7 @@ for sample in "${samples[@]}"; do
         echo "${sample}" 2>&1
     fi
 
-    # If result is unique, throw error
+    # If result is not unique, throw error
     if [ $(wc -l <<< "${result}") -ne 1 ]; then
         echo "The following sample is not unique:" 2>&1
         echo "${sample}" 2>&1
