@@ -62,7 +62,7 @@ for sample in "${samples[@]}"; do
     #if [ $(wc -l <<< "${result}") -ne 1 ]; then
     # If it has multiple lines, and the additional samples are just extensions,
     # then the result is still unique
-    if [ $(wc -l <<< $(sed 's/_ext[0-9]//' <<< "${result}") | uniq) -ne 1 ]; then
+    if [ $(sed 's/_ext[0-9]//' <<< "${result}" | uniq | wc -l) -ne 1 ]; then
 
         echo "The following sample is not unique:" 2>&1
         echo "${sample}" 2>&1
