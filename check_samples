@@ -103,7 +103,14 @@ for sample in "${samples[@]}"; do
     fi
 
     # Print result
-    echo "${result}"
+    #echo "${result}"
+    # Better: Print result with link to DAS
+    #echo "<li><a href="https://cmsweb.cern.ch/das/request?input=${result}">${result}</a></li>"
+    # Still better: Print result with link to DAS and catch multiple samples
+    IFS=$'\n'
+    for r in ${result}; do
+        echo "<li><a href="https://cmsweb.cern.ch/das/request?input=${r}">${r}</a></li>"
+    done
 
 done
 
