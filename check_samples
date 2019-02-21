@@ -72,6 +72,7 @@ for sample in "${samples[@]}"; do
     if [ -z "${result}" ]; then
         echo "The following sample yields no results:" 2>&1
         echo "${sample}" 2>&1
+        exit 1
     fi
 
     # If result is not unique, throw error
