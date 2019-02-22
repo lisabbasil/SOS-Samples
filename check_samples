@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Check array of samples with dasgoclient
+set -euf -o pipefail
 
 # Prepare sample list in vim; check every step carefully, as they might break:
 # 1) Copy over samples of interest from HTML page
