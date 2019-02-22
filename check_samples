@@ -10,7 +10,7 @@ set -euf -o pipefail
 # 3) Remove extensions, they are detected automatically
 #    :g/_ext[0-9]/d
 # 4) Replace some part of the sample names with a wildcard, e.g.
-#    :%s/-PUSummer16v3Fast_lhe_94X_mcRun2_asymptotic_v[^/]*/*/
+#    :%s/MiniAODv2[^/]*/MiniAODv3*/
 #    Make sure you substitute as many occurrences as you have samples
 # 5) Check if you still have duplicates by comparing the output of these two
 #    commands; if they don't show the same number, you have duplicates; you can
