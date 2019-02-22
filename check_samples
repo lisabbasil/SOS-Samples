@@ -121,7 +121,7 @@ for sample in "${samples[@]}"; do
         # Output to stdout
         echo "${r}"
         # Output to HTML file
-        echo "<li><a href="https://cmsweb.cern.ch/das/request?input=${r}">${r}</a></li>" >> "${outfile}"
+        echo "<li><a href=\"https://cmsweb.cern.ch/das/request?input=${r}\">${r}</a></li>" >> "${outfile}"
     done
 
 done
