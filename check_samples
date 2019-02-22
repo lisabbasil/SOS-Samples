@@ -19,6 +19,8 @@ set -euf -o pipefail
 #    :!grep '^samples' check_samples | wc -l
 #    :!grep '^samples' check_samples | sort | uniq | wc -l
 
+outfile=output.htm
+
 samples=()
 samples+=(/TTJets_DiLept_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUSummer16v3Fast*/MINIAODSIM)
 samples+=(/DYJetsToLL_M-5to50_HT-70to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*/MINIAODSIM)
@@ -71,6 +73,11 @@ if [ ! -z "${dups}" ]; then
     exit 1
 fi
 
+# Before printing the output to the out file, backup the previous out file;
+# the outfile before the previous out file will get overwritten, though;
+# so you should still be careful
+mv "${outfile}" "${outfile}".bkp 2>/dev/null || true
+
 # Now get full sample name from string in array, perform some basic checks
 for sample in "${samples[@]}"; do
 
@@ -110,7 +117,10 @@ for sample in "${samples[@]}"; do
     # Still better: Print result with link to DAS and catch multiple samples
     IFS=$'\n'
     for r in ${result}; do
-        echo "<li><a href="https://cmsweb.cern.ch/das/request?input=${r}">${r}</a></li>"
+        # Output to stdout
+        echo "${r}"
+        # Output to HTML file
+        echo "<li><a href="https://cmsweb.cern.ch/das/request?input=${r}">${r}</a></li>" >> "${outfile}"
     done
 
 done
