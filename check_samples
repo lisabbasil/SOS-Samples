@@ -141,10 +141,10 @@ mv "${outfile}" "${outfile}".bkp 2>/dev/null || true
 # Now get full sample name from string in array, perform some basic checks
 for sample in "${samples[@]}"; do
 
-    #echo dasgoclient --query="dataset=${sample}"
+    #echo dasgoclient -query="dataset=${sample}"
 
     # Query DAS and store result in variable for further processing
-    result=$(dasgoclient --query="dataset=${sample}")
+    result=$(dasgoclient -query="dataset=${sample}")
 
     # If result is empty, throw error
     if [ -z "${result}" ]; then
